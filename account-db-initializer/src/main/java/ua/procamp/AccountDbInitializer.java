@@ -1,13 +1,20 @@
 package ua.procamp;
 
+import ua.procamp.util.FileReader;
+
 import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * {@link AccountDbInitializer} provides an API that allow to initialize (create) an Account table in the database
  */
 public class AccountDbInitializer {
+    private static final String TABLE_INITIALIZATION_SQL_FILE = "createDb.sql";
     private DataSource dataSource;
+
+    private String createDb = FileReader.readWholeFileFromResources(TABLE_INITIALIZATION_SQL_FILE);
 
     public AccountDbInitializer(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -28,6 +35,10 @@ public class AccountDbInitializer {
      * @throws SQLException
      */
     public void init() throws SQLException {
-        throw new UnsupportedOperationException("It's your job to make it work!"); // todo
+        try (Connection connection = dataSource.getConnection();) {
+            Statement statement = connection.createStatement();
+            statement.execute(createDb);
+            System.out.println("done");
+        }
     }
 }
