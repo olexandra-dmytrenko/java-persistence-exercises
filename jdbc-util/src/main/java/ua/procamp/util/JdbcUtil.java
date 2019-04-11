@@ -7,9 +7,9 @@ import javax.sql.DataSource;
 import java.util.Map;
 
 public class JdbcUtil {
-    static String DEFAULT_DATABASE_NAME = "bobocode_db";
-    static String DEFAULT_USERNAME = "bobouser";
-    static String DEFAULT_PASSWORD = "bobodpass";
+    static String DEFAULT_DATABASE_NAME = "gl_procamp";
+    static String DEFAULT_USERNAME = "gl_procamp";
+    static String DEFAULT_PASSWORD = "test123";
 
     public static DataSource createDefaultInMemoryH2DataSource() {
         String url = formatH2ImMemoryDbUrl(DEFAULT_DATABASE_NAME);
@@ -43,7 +43,7 @@ public class JdbcUtil {
     }
 
     private static String formatPostgresDbUrl(String databaseName) {
-        return String.format("jdbc:postgresql://localhost:5432/%s", databaseName);
+        return String.format("jdbc:postgresql://localhost:5437/%s", databaseName);
     }
 
     public static Map<String, String> getInMemoryDbPropertiesMap() {
