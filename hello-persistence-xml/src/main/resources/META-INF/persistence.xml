@@ -13,7 +13,6 @@
         </properties>
     </persistence-unit>
 
-
     <!--todo: configure a persistence unit with name: "TuttiFrutti"-->
     <!--todo: add class ua.procamp.model.Song to this persistence unit-->
     <!--todo: set property hibernate connection url: "jdbc:h2:mem:tutti_frutti_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false"-->
